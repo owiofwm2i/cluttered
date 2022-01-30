@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+apt update && apt install wget -y
 echo "============================================================================================="
 echo "                              WELCOME TO NKNx FAST DEPLOY!"
 echo "============================================================================================="
@@ -79,7 +80,8 @@ rm -rf wallet.*
 echo $2 | base64 --decode > wallet.json
 echo $3 > wallet.pswd
 rm -rf ChainDB
-wget -c --no-check-certificate https://nkn.org/ChainDB_pruned_latest.tar.gz -O - | tar -xz
+#wget -c --no-check-certificate https://nkn.org/ChainDB_pruned_latest.tar.gz -O - | tar -xz
+wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
 chown -R nknx:nknx ChainDB/
 systemctl start nkn-commercial.service
 echo "Applying finishing touches..."
