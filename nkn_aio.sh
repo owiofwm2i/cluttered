@@ -25,6 +25,22 @@ cat >> /etc/security/limits.conf <<EOF
 * soft nproc 2048
 * hard nproc 4096
 EOF
+
+
+dopullchaindb(){
+  wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+  filesize=`du "ChainDB" | awk '{ print $1 }'`
+  echo ${filesize}
+  while [[ $filesize -lt 19000000 ]];
+  do
+    echo "redownload chianDB"
+    rm -rf ChainDB
+    wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+  done
+}
+
+
+
 sysctl -p
 export DEBIAN_FRONTEND=noninteractive
 apt-get -qq update
@@ -81,7 +97,8 @@ echo $2 | base64 --decode > wallet.json
 echo $3 > wallet.pswd
 rm -rf ChainDB
 #wget -c --no-check-certificate https://nkn.org/ChainDB_pruned_latest.tar.gz -O - | tar -xz
-wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+#wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+dopullchaindb
 chown -R nknx:nknx ChainDB/
 systemctl start nkn-commercial.service
 echo "Applying finishing touches..."
