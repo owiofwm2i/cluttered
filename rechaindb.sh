@@ -2,7 +2,7 @@
 countnum = 0
 cd /home/nknx/nkn-commercial/services/nkn-node/
 dopullchaindb(){
-  wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+  wget -c --no-check-certificate https://drive.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
   filesize=`du "ChainDB" | awk '{ print $1 }'`
   echo ${filesize}
   while [[ $filesize -lt 19000000 && countnum -lt 5 ]];
@@ -10,7 +10,7 @@ dopullchaindb(){
     echo ${countnum}
     echo "redownload chianDB"
     rm -rf ChainDB
-    wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+    wget -c --no-check-certificate https://drive.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
   done
 }
 systemctl stop nkn-commercial.service
