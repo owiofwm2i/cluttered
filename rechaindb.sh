@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd /home/nknx/nkn-commercial/services/nkn-node/
 dopullchaindb(){
   wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
@@ -11,11 +12,12 @@ dopullchaindb(){
     wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
   done
 }
+systemctl stop nkn-commercial.service
 dopullchaindb
 chown -R nknx:nknx /home/nknx
 chmod -R 755 /home/nknx
 chown -R nknx:nknx ChainDB/
 
-systemctl restart nkn-commercial.service
+systemctl start nkn-commercial.service
 
 echo "DONE wait for node online"
