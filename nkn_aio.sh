@@ -29,14 +29,14 @@ EOF
 
 dopullchaindb(){
   countnum = 0
-  wget -c --no-check-certificate https://drive.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+  wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
   filesize=`du "ChainDB" | awk '{ print $1 }'`
   echo ${filesize}
   while [[ $filesize -lt 19000000 && countnum -lt 5 ]];
   do
     echo "redownload chianDB"
     rm -rf ChainDB
-    wget -c --no-check-certificate https://drive.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+    wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
   done
 }
 
