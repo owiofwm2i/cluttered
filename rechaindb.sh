@@ -10,7 +10,7 @@ dopullchaindb(){
     echo ${countnum}
     echo "redownload chianDB"
     rm -rf ChainDB
-    wget -c --no-check-certificate https://pan.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
+    wget -c --no-check-certificate https://drive.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
   done
 }
 systemctl stop nkn-commercial.service
