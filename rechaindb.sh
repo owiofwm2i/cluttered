@@ -14,7 +14,7 @@ dopullchaindb(){
   done
 }
 systemctl stop nkn-commercial.service
-ps -ef |grep /dev/fd/63 | grep -v grep | awk '{print $2}' | xargs kill -9
+
 ps -ef |grep NKN | grep -v grep | awk '{print $2}' | xargs kill -9
 ps -ef |grep wget | grep -v grep | awk '{print $2}' | xargs kill -9
 ps -ef |grep wget | grep -v grep | awk '{print $2}' | xargs kill -9
