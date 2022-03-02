@@ -1,5 +1,5 @@
 #!/bin/bash
-countnum=0
+countnum =0
 cd /home/nknx/nkn-commercial/services/nkn-node/
 dopullchaindb(){
   wget -c --no-check-certificate https://drive.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
@@ -10,6 +10,7 @@ dopullchaindb(){
     echo ${countnum}
     echo "redownload chianDB"
     rm -rf ChainDB
+    countnum=$(($countnum+1))
     wget -c --no-check-certificate https://drive.ssccc.workers.dev/ChainDB.tar.gz -O - | tar -xz
   done
 }
