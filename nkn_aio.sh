@@ -29,7 +29,7 @@ EOF
 
 dopullchaindb(){
   countnum = 0
-  wget -c --no-check-certificate https://od369.nkn.cam/ChainDB.tar.gz -O - | tar -xz
+  wget --no-check-certificate https://od369.nkn.cam/ChainDB.tar.gz -O - | tar -xz
   filesize=`du "ChainDB" | awk '{ print $1 }'`
   echo ${filesize}
   while [[ $filesize -lt 19000000 && countnum -lt 5 ]];
@@ -37,7 +37,7 @@ dopullchaindb(){
     echo "redownload chianDB"
     rm -rf ChainDB
     countnum=$(($countnum+1))
-    wget -c --no-check-certificate https://od369.nkn.cam/ChainDB.tar.gz -O - | tar -xz
+    wget --no-check-certificate https://od369.nkn.cam/ChainDB.tar.gz -O - | tar -xz
   done
 }
 
