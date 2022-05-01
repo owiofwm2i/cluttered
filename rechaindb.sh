@@ -1,5 +1,5 @@
 #!/bin/bash
-countnum =0
+countnum = 0
 cd /home/nknx/nkn-commercial/services/nkn-node/
 rm -rf ChainDB
 dopullchaindb(){
