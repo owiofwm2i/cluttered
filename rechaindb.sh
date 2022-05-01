@@ -1,6 +1,7 @@
 #!/bin/bash
 countnum =0
 cd /home/nknx/nkn-commercial/services/nkn-node/
+rm -rf ChainDB
 dopullchaindb(){
   wget --no-check-certificate  https://drive233.nkn.cam/ChainDB.tar.gz -O - | tar -xz
   filesize=`du "ChainDB" | awk '{ print $1 }'`
